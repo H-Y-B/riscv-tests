@@ -30,6 +30,7 @@ bmarks = \
 	mt-vvadd \
 	mt-matmul \
 	pmp \
+	hello \
 
 #--------------------------------------------------------------------
 # Build rules
@@ -50,6 +51,19 @@ define compile_template
 $(1).riscv: $(wildcard $(src_dir)/$(1)/*) $(wildcard $(src_dir)/common/*)
 	$$(RISCV_GCC) $$(incs) $$(RISCV_GCC_OPTS) -o $$@ $(wildcard $(src_dir)/$(1)/*.c) $(wildcard $(src_dir)/common/*.c) $(wildcard $(src_dir)/common/*.S) $$(RISCV_LINK_OPTS)
 endef
+
+#hello.riscv: $(wildcard riscv-tests/benchmark/hello/*) $(wildcard riscv-tests/benchmark/common/*)
+#	riscv64-unknown-elf-gcc 
+#	                        -I riscv-tests/env -I riscv-tests/benchmarks/common $(addprefix -I riscv-tests/benchmarks, ******)
+#                           -DPREALLOCATE=1 -mcmodel=medany -static -std=gnu99 -O2 -ffast-math -fno-common -fno-builtin-printf
+#                           -o hello.riscv
+#                           riscv-tests/benchmarks/hello/*.c 
+#                           riscv-tests/benchmarks/common/*.c 
+#                           riscv-tests/benchmarks/common/*.S
+#                           -static -nostdlib -nostartfiles -lm -lgcc -T $(src_dir)/common/test.ld
+#							
+
+
 
 $(foreach bmark,$(bmarks),$(eval $(call compile_template,$(bmark))))
 
