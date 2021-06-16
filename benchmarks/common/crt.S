@@ -123,7 +123,7 @@ _start:
   csrr a0, mhartid
   # for now, assume only 1 core
   li a1, 1
-1:bgeu a0, a1, 1b
+1:bgeu a0, a1, 1b  # 选择 hart id = 0
 
   # give each core 128KB of stack + TLS
 #define STKSHIFT 17
@@ -133,7 +133,7 @@ _start:
   sll a2, a0, STKSHIFT
   add tp, tp, a2
 
-  j _init
+  j _init   # in syscalls.c
 
   .align 2
 trap_entry:
