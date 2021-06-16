@@ -4,8 +4,8 @@ typedef unsigned int u32;
 typedef unsigned long long u64;
 
 #define csr_misa 0x301
-#define csr_size 0x345
-#define csr_start 0x346
+#define csr_start 0x345
+#define csr_size 0x346
 
 /*
 #define read_csr(reg) ({ unsigned long __tmp; \
