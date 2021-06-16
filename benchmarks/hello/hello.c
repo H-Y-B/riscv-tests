@@ -30,7 +30,7 @@ inline void write_csr(u32 csr_num,u64 data){
 
 
 
-int main(){
+int main (int argc, char** argv)
 
 	write_csr(csr_size,0x80000);
 	u64 size=read_csr(csr_size);

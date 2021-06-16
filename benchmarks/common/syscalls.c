@@ -109,7 +109,7 @@ void _init(int cid, int nc)
   thread_entry(cid, nc);
 
   // only single-threaded programs should ever get here.
-  int ret = main(0, 0);
+  int ret = main(0, 0);  //执行我们编写的main函数
 
   char buf[NUM_COUNTERS * 32] __attribute__((aligned(64)));
   char* pbuf = buf;
